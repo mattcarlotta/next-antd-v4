@@ -1,36 +1,36 @@
-import React from 'react'
-import Link from '../components/Link'
-import { Table, Switch, Radio, Form } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
+import React from "react";
+import Link from "../components/Link";
+import { Table, Switch, Radio, Form } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
+    title: "Name",
+    dataIndex: "name",
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
+    title: "Age",
+    dataIndex: "age",
     sorter: (a, b) => a.age - b.age,
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
+    title: "Address",
+    dataIndex: "address",
     filters: [
       {
-        text: 'London',
-        value: 'London',
+        text: "London",
+        value: "London",
       },
       {
-        text: 'New York',
-        value: 'New York',
+        text: "New York",
+        value: "New York",
       },
     ],
     onFilter: (value, record) => record.address.indexOf(value) === 0,
   },
   {
-    title: 'Action',
-    key: 'action',
+    title: "Action",
+    key: "action",
     sorter: true,
     filters: [],
     onFilter: () => {},
@@ -43,31 +43,33 @@ const columns = [
       </span>
     ),
   },
-]
+];
 
-const data = []
+const data = [];
 for (let i = 1; i <= 10; i++) {
   data.push({
     key: i,
-    name: 'John Brown',
+    name: "John Brown",
     age: `${i}2`,
     address: `New York No. ${i} Lake Park`,
     description: `My name is John Brown, I am ${i}2 years old, living in New York No. ${i} Lake Park.`,
-  })
+  });
 }
 
-const expandable = { expandedRowRender: record => <p>{record.description}</p> }
-const title = () => 'Here is title'
-const showHeader = true
-const footer = () => 'Here is footer'
-const pagination = { position: 'bottom' }
+const expandable = {
+  expandedRowRender: (record) => <p>{record.description}</p>,
+};
+const title = () => "Here is title";
+const showHeader = true;
+const footer = () => "Here is footer";
+const pagination = { position: "bottom" };
 
 class TableExample extends React.Component {
   state = {
     bordered: false,
     loading: false,
     pagination,
-    size: 'default',
+    size: "default",
     expandable,
     title: undefined,
     showHeader,
@@ -76,81 +78,81 @@ class TableExample extends React.Component {
     scroll: undefined,
     hasData: true,
     tableLayout: undefined,
-  }
+  };
 
-  handleToggle = prop => enable => {
-    this.setState({ [prop]: enable })
-  }
+  handleToggle = (prop) => (enable) => {
+    this.setState({ [prop]: enable });
+  };
 
-  handleSizeChange = e => {
-    this.setState({ size: e.target.value })
-  }
+  handleSizeChange = (e) => {
+    this.setState({ size: e.target.value });
+  };
 
-  handleTableLayoutChange = e => {
-    this.setState({ tableLayout: e.target.value })
-  }
+  handleTableLayoutChange = (e) => {
+    this.setState({ tableLayout: e.target.value });
+  };
 
-  handleExpandChange = enable => {
-    this.setState({ expandable: enable ? expandable : undefined })
-  }
+  handleExpandChange = (enable) => {
+    this.setState({ expandable: enable ? expandable : undefined });
+  };
 
-  handleEllipsisChange = enable => {
-    this.setState({ ellipsis: enable })
-  }
+  handleEllipsisChange = (enable) => {
+    this.setState({ ellipsis: enable });
+  };
 
-  handleTitleChange = enable => {
-    this.setState({ title: enable ? title : undefined })
-  }
+  handleTitleChange = (enable) => {
+    this.setState({ title: enable ? title : undefined });
+  };
 
-  handleHeaderChange = enable => {
-    this.setState({ showHeader: enable ? showHeader : false })
-  }
+  handleHeaderChange = (enable) => {
+    this.setState({ showHeader: enable ? showHeader : false });
+  };
 
-  handleFooterChange = enable => {
-    this.setState({ footer: enable ? footer : undefined })
-  }
+  handleFooterChange = (enable) => {
+    this.setState({ footer: enable ? footer : undefined });
+  };
 
-  handleRowSelectionChange = enable => {
-    this.setState({ rowSelection: enable ? {} : undefined })
-  }
+  handleRowSelectionChange = (enable) => {
+    this.setState({ rowSelection: enable ? {} : undefined });
+  };
 
-  handleYScrollChange = enable => {
-    this.setState({ yScroll: enable })
-  }
+  handleYScrollChange = (enable) => {
+    this.setState({ yScroll: enable });
+  };
 
-  handleXScrollChange = e => {
-    this.setState({ xScroll: e.target.value })
-  }
+  handleXScrollChange = (e) => {
+    this.setState({ xScroll: e.target.value });
+  };
 
-  handleDataChange = hasData => {
-    this.setState({ hasData })
-  }
+  handleDataChange = (hasData) => {
+    this.setState({ hasData });
+  };
 
-  handlePaginationChange = e => {
-    const { value } = e.target
+  handlePaginationChange = (e) => {
+    const { value } = e.target;
     this.setState({
-      pagination: value === 'none' ? false : { position: value },
-    })
-  }
+      pagination: value === "none" ? false : { position: value },
+    });
+  };
 
   render() {
-    const { xScroll, yScroll, ...state } = this.state
+    const { xScroll, yScroll, ...state } = this.state;
 
-    const scroll = {}
+    const scroll = {};
     if (yScroll) {
-      scroll.y = 240
+      scroll.y = 240;
     }
     if (xScroll) {
-      scroll.x = '100vw'
+      scroll.x = "100vw";
     }
 
-    const tableColumns = columns.map(item => ({
+    const tableColumns = columns.map((item) => ({
       ...item,
       ellipsis: state.ellipsis,
-    }))
-    if (xScroll === 'fixed') {
-      tableColumns[0].fixed = true
-      tableColumns[tableColumns.length - 1].fixed = 'right'
+    }));
+    if (xScroll === "fixed") {
+      tableColumns[0].fixed = true;
+      tableColumns[tableColumns.length - 1].fixed = "right";
     }
 
     return (
@@ -164,13 +166,13 @@ class TableExample extends React.Component {
           <Form.Item label="Bordered">
             <Switch
               checked={state.bordered}
-              onChange={this.handleToggle('bordered')}
+              onChange={this.handleToggle("bordered")}
             />
           </Form.Item>
           <Form.Item label="loading">
             <Switch
               checked={state.loading}
-              onChange={this.handleToggle('loading')}
+              onChange={this.handleToggle("loading")}
             />
           </Form.Item>
           <Form.Item label="Title">
@@ -240,7 +242,7 @@ class TableExample extends React.Component {
           </Form.Item>
           <Form.Item label="Pagination">
             <Radio.Group
-              value={state.pagination ? state.pagination.position : 'none'}
+              value={state.pagination ? state.pagination.position : "none"}
               onChange={this.handlePaginationChange}
             >
               <Radio.Button value="top">Top</Radio.Button>
@@ -270,8 +272,8 @@ class TableExample extends React.Component {
           }
         `}</style>
       </div>
-    )
+    );
   }
 }
 
-export default TableExample
+export default TableExample;

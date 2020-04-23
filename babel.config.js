@@ -1,17 +1,17 @@
-module.exports = api => {
-  api.cache.using(() => process.env.NODE_ENV)
+module.exports = (api) => {
+  api.cache.using(() => process.env.NODE_ENV);
 
   return {
     presets: [
       [
-        'next/babel',
+        "next/babel",
         {
-          'styled-jsx': {
-            plugins: ['styled-jsx-plugin-sass'],
+          "styled-jsx": {
+            plugins: ["styled-jsx-plugin-sass"],
           },
         },
       ],
     ],
-    plugins: [['import', { libraryName: 'antd', libraryDirectory: 'lib' }]],
-  }
-}
+    plugins: [["import", { libraryName: "antd", libraryDirectory: "lib" }]],
+  };
+};
