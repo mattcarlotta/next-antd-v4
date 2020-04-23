@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from '../components/Link'
+import React from "react";
+import Link from "../components/Link";
 
 const Home = () => (
   <div className="home">
@@ -46,6 +46,6 @@ const Home = () => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;
