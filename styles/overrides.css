@@ -1,0 +1,4 @@
+.ant-table-tbody > tr:nth-child(1) > td:nth-child(3) {
+  font-size: 100px;
+  color: green;
+}
